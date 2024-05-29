@@ -15,7 +15,8 @@
         "forceConsistentCasingInFileNames": true,
         "moduleResolution": "node",
         "noEmit": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "baseUrl": "./",
     },
     "include": ["src/**/*.ts", "tsup.config.ts"]
 }

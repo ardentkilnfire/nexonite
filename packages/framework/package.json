@@ -3,16 +3,22 @@
     "version": "0.0.1",
     "description": "A framework for building discord bot using discord.js",
     "license": "MIT",
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
     "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
     "author": "Ardentkilnfire <akt01.social@gmail.com>",
     "scripts": {
         "format": "prettier --write .",
         "lint": "tsc",
-        "build": "tsup-node",
-        "dev": "tsup-node --watch src"
+        "build": "tsup",
+        "dev": "tsup --watch src"
     },
     "devDependencies": {
         "@types/node": "^20.12.12",
