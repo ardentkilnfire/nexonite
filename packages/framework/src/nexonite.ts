@@ -1,7 +1,7 @@
+import type { Logger } from '$lib/types/logger';
+import type { NexoOptions } from '$lib/types/nexonite';
+import { createLogger } from '$lib/utils/logger';
 import { Client } from 'discord.js';
-import { Logger } from './lib/types/logger';
-import { NexoOptions } from './lib/types/nexonite';
-import { createLogger } from './lib/utils/logger';
 
 export class Nexonite extends Client {
     public readonly log: Logger;

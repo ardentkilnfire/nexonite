@@ -17,6 +17,10 @@
         "noEmit": true,
         "skipLibCheck": true,
         "baseUrl": "./",
+        "paths": {
+            "$src/*": ["./src/*"],
+            "$lib/*": ["./src/lib/*"],
+        }
     },
     "include": ["src/**/*.ts", "tsup.config.ts"]
 }

@@ -7,7 +7,7 @@ export const tsup: Options = {
     dts: true,
     keepNames: true,
     target: 'esnext',
-    format: ['cjs', 'esm'],
+    format: ['esm'],
     entryPoints: ['src/index.ts'],
     shims: true,
     noExternal: [/^[a-zA-Z]:/],
