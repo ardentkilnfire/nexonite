@@ -1,0 +1,17 @@
+{
+    "name": "nexonite-monorepo",
+    "version": "0.0.0",
+    "license": "MIT",
+    "author": "Ardentkilnfire <akt01.social@gmail.com>",
+    "main": "index.js",
+    "scripts": {
+        "format": "pnpm -r format",
+        "lint": "pnpm -r lint",
+        "build": "pnpm -r build",
+        "dev": "pnpm --parallel -r dev"
+    },
+    "keywords": [],
+    "devDependencies": {
+        "@changesets/cli": "^2.27.3"
+    }
+}

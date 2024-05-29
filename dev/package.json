@@ -1,0 +1,20 @@
+{
+    "name": "test-bot",
+    "version": "1.0.0",
+    "description": "IDK",
+    "main": "src/index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^20.12.12",
+        "discord.js": "^14.15.2",
+        "dotenv": "^16.4.5",
+        "nexonite": "workspace:*",
+        "nodemon": "^3.1.1"
+    }
+}
