@@ -1,6 +1,7 @@
 {
     "name": "nexonite",
     "version": "0.0.1",
+    "author": "Ardentkilnfire <akt01.social@gmail.com>",
     "description": "A framework for building discord bot using discord.js",
     "license": "MIT",
     "type": "module",
@@ -13,12 +14,11 @@
     "files": [
         "dist"
     ],
-    "author": "Ardentkilnfire <akt01.social@gmail.com>",
     "scripts": {
-        "format": "prettier --write .",
-        "lint": "tsc",
+        "dev": "tsup --watch src",
         "build": "tsup",
-        "dev": "tsup --watch src"
+        "lint": "tsc",
+        "format": "prettier --write ."
     },
     "devDependencies": {
         "@types/node": "^20.12.12",
@@ -30,5 +30,19 @@
     "peerDependencies": {
         "discord.js": "^14.0.0"
     },
-    "keywords": []
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ardentkilnfire/nexonite.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ardentkilnfire/nexonite/issues"
+    },
+    "homepage": "https://github.com/ardentkilnfire/nexonite",
+    "engines": {
+        "node": ">= 18"
+    },
+    "keywords": [
+        "nexonite",
+        "discord.js framework"
+    ]
 }
