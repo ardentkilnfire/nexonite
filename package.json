@@ -6,7 +6,8 @@
         "format": "pnpm -r format",
         "lint": "pnpm -r lint",
         "build": "pnpm -r build",
-        "dev": "pnpm --parallel -r dev"
+        "dev": "pnpm --parallel -r dev",
+        "release": "pnpm lint && pnpm build && changeset publish"
     },
     "devDependencies": {
         "@changesets/cli": "^2.27.3"

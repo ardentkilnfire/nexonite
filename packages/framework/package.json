@@ -12,7 +12,10 @@
         }
     },
     "files": [
-        "dist"
+        "dist",
+        "LICENSE",
+        "README.md",
+        "CHANGELOG.md"
     ],
     "scripts": {
         "dev": "tsup --watch src",
