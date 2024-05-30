@@ -12,7 +12,7 @@ jobs:
         steps:
             - uses: actions/checkout@v4
               with:
-                fetch-depth: 0
+                  fetch-depth: 0
             - uses: pnpm/action-setup@v4
               with:
                   version: 9
@@ -28,5 +28,5 @@ jobs:
               with:
                   publish: pnpm run release
               env:
-                  GITHUB_TOKE: ${{secrets.GITHUB_TOKEN}}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   NPM_TOKEN: ${{secrets.NPM_TOKEN}}
