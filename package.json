@@ -3,10 +3,10 @@
     "private": true,
     "license": "MIT",
     "scripts": {
-        "format": "pnpm -r format",
-        "lint": "pnpm -r lint",
-        "build": "pnpm -r build",
         "dev": "pnpm --parallel -r dev",
+        "build": "pnpm -r build",
+        "lint": "pnpm -r lint",
+        "format": "pnpm -r format",
         "release": "pnpm lint && pnpm build && changeset publish"
     },
     "devDependencies": {
