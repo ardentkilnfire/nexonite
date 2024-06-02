@@ -1,0 +1,21 @@
+name: 'Feature Request'
+description: Request a new feature!
+labels: [enhancement]
+body:
+    - type: textarea
+      id: description
+      attributes:
+          label: Describe the feature
+          description: A detailed description of the feature would be great. But not mandatory!
+          placeholder: I want this because ...
+      validations:
+          required: false
+
+    - type: textarea
+      id: example
+      attributes:
+          label: Examples
+          description: Any example of feature, that you can imagine or saw somewhere.
+          placeholder: const example = myExample();
+      validations:
+          required: false

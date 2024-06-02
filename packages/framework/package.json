@@ -47,5 +47,8 @@
     "keywords": [
         "nexonite",
         "discord.js framework"
-    ]
+    ],
+    "dependencies": {
+        "zod": "^3.23.8"
+    }
 }

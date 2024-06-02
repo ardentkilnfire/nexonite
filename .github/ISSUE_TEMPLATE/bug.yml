@@ -1,0 +1,35 @@
+name: Bug Report
+description: Found a bug? Report now!
+labels: ["bug", "needs triage"] 
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: What went wrong and what did you expect?
+      placeholder: I was doing x and expected y but z happened!
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Describe ways to reproduce the bug.
+      placeholder: What steps caused the issue?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Please copy and paste the errors from console
+      render: bash
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: Output of `npx envinfo --system --binaries --npmPackages nexonite,discord.js` in the __same folder__ as your bot
+      render: bash
+      placeholder: System Information...
+    validations:
+      required: true
