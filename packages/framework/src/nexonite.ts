@@ -1,7 +1,9 @@
-import type { Logger } from '$lib/types/logger';
-import type { NexoOptions } from '$lib/types/nexonite';
-import { createLogger } from '$lib/utils/logger';
+import { createLogger } from '$utils/logger';
 import { Client } from 'discord.js';
+
+// Types
+import type { Logger } from '$types/logger';
+import type { NexoOptions } from '$types/nexonite';
 
 export class Nexonite extends Client {
     public readonly log: Logger;
@@ -16,7 +18,7 @@ export class Nexonite extends Client {
 
     async login(token?: string): Promise<string> {
         return super.login(token || process.env.DISCORD_TOKEN).then((token) => {
-            this.log.debug(`Logged in as ${this.user?.tag}`);
+            this.log(`Logged in as ${this.user?.tag}`);
             return token;
         });
     }

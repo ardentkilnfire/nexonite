@@ -1,2 +1,2 @@
-export type { NexoOptions } from '$lib/types/nexonite';
-export { Nexonite } from '$src/nexonite';
+export { Nexonite } from '$/nexonite';
+export type { NexoOptions } from '$types/nexonite';

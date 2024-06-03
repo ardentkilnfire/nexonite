@@ -1,5 +1,6 @@
-import { Nexonite } from '$src/nexonite';
-import type { Logger } from '../types/logger';
+// Types
+import type { Nexonite } from '$/nexonite';
+import type { Logger } from '$types/logger';
 
 export function createLogger(client: Nexonite): Logger {
     const methods = {

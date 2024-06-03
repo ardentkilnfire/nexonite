@@ -1,6 +1,7 @@
 import 'dotenv/config.js';
-import { Nexonite } from 'nexonite';
+
 import { ActivityType, GatewayIntentBits } from 'discord.js';
+import { Nexonite } from 'nexonite';
 
 const nexoClient = new Nexonite({
     clientOptions: {
@@ -11,7 +12,9 @@ const nexoClient = new Nexonite({
         ],
         presence: {
             status: 'idle',
-            activities: [{ name: 'martian vibes', type: ActivityType.Custom, state: "🔮 𝗦𝗼𝗹𝘃𝗶𝗻𝗴 𝗠𝘆𝘀𝘁𝗲𝗿𝗶𝗲𝘀" }],
+            activities: [
+                { name: 'martian vibes', type: ActivityType.Custom, state: '🔮 𝗦𝗼𝗹𝘃𝗶𝗻𝗴 𝗠𝘆𝘀𝘁𝗲𝗿𝗶𝗲𝘀' },
+            ],
         },
     },
     debug: true,

@@ -18,8 +18,9 @@
         "skipLibCheck": true,
         "baseUrl": "./",
         "paths": {
-            "$src/*": ["./src/*"],
-            "$lib/*": ["./src/lib/*"]
+            "$/*": ["./src/*"],
+            "$types/*": ["./src/lib/types/*"],
+            "$utils/*": ["./src/lib/utils/*"],
         }
     },
     "include": ["src/**/*.ts", "tsup.config.ts"]
