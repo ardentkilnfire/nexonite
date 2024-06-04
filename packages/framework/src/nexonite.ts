@@ -1,5 +1,7 @@
 import { createLogger } from '$utils/logger';
+import { parseSchema } from '$utils/zod';
 import { Client } from 'discord.js';
+import { nexoOptionsSchema } from './nexoSchema';
 
 // Types
 import type { Logger } from '$types/logger';
@@ -28,7 +30,8 @@ export class Nexonite extends Client {
         super(options.clientOptions);
 
         this.log = createLogger(this);
-        this.nexoOptions = options;
+        // @ts-expect-error issue with intents
+        this.nexoOptions = parseSchema('NexoOptions', nexoOptionsSchema, options) as NexoOptions;
     }
 
     /**

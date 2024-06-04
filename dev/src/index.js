@@ -18,6 +18,7 @@ const nexoClient = new Nexonite({
         },
     },
     debug: true,
+    dev: ['1171628645379493980'],
 });
 
 try {
