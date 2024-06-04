@@ -71,7 +71,7 @@ export interface NexoOptions {
 
     /**
      * Developer mode options
-     * 
+     *
      * @type {boolean | string[]}
      * @default false
      *
