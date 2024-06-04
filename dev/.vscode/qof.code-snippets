@@ -1,0 +1,17 @@
+{
+    // Events
+    "Nexonite Event": {
+        "prefix": "nevent",
+        "body": [
+            "import { event } from 'nexonite';",
+            "",
+            "export default event({",
+            "    name: '${1:eventName}',",
+            "    execute: (client, ${2:eventArgs}) => {",
+            "        ${0}",
+            "    },",
+            "});",
+        ],
+        "description": "Snippet for creating a Nexonite event",
+    },
+}
