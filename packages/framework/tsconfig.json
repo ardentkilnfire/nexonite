@@ -21,6 +21,7 @@
             "$/*": ["./src/*"],
             "$types/*": ["./src/lib/types/*"],
             "$utils/*": ["./src/lib/utils/*"],
+            "$events/*": ["./src/events/*"]
         }
     },
     "include": ["src/**/*.ts", "tsup.config.ts"]
