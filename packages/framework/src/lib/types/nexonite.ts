@@ -1,4 +1,4 @@
-import { ClientOptions } from 'discord.js';
+import type { ClientOptions } from 'discord.js';
 
 export interface NexoOptions {
     /**
@@ -19,37 +19,71 @@ export interface NexoOptions {
     /**
      * Components
      */
-    components?: {
-        /**
-         * Path to buttons
-         */
-        buttons: string;
+    components?:
+        | {
+              /**
+               * Path to buttons
+               */
+              buttons: string;
 
-        /**
-         * path to modals
-         */
-        modals: string;
+              /**
+               * path to modals
+               */
+              modals?: string;
 
-        /**
-         * Path to selectMenus
-         */
-        selectMenus: string;
-    };
+              /**
+               * Path to selectMenus
+               */
+              selectMenus?: string;
+          }
+        | {
+              /**
+               * Path to buttons
+               */
+              buttons?: string;
+
+              /**
+               * path to modals
+               */
+              modals: string;
+
+              /**
+               * Path to selectMenus
+               */
+              selectMenus?: string;
+          }
+        | {
+              /**
+               * Path to buttons
+               */
+              buttons?: string;
+
+              /**
+               * path to modals
+               */
+              modals?: string;
+
+              /**
+               * Path to selectMenus
+               */
+              selectMenus: string;
+          };
 
     /**
      * Developer mode options
+     *
+     * @type {boolean | string[]}
+     * @default false
+     *
+     * @example
+     * // Enable developer mode globaly
+     * dev: true
+     *
+     * @example
+     * // Enable developer mode on guild basis
+     * dev: ['3241234567890123456', '7891234567890123456', '9012345678901234567']
      */
-    dev?: {
-        /**
-         * Should dev mode be enabled globally?
-         */
-        global?: boolean;
-
-        /**
-         * The guilds to run dev mode commands in
-         */
-        guilds?: string[];
-    };
+    dev?: boolean | string[];
 
     /**
      * Should nexonite cache commands - highly recommended

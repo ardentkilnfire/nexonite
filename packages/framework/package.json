@@ -1,6 +1,6 @@
 {
     "name": "nexonite",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "author": "Ardentkilnfire <akt01.social@gmail.com>",
     "description": "A framework for building discord bot using discord.js",
     "license": "MIT",
