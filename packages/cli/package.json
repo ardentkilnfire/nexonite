@@ -1,0 +1,32 @@
+{
+    "name": "create-nexonite",
+    "description": "Get started quickly with nexonite by running: npm create nexonite",
+    "version": "0.0.0",
+    "type": "module",
+    "bin": "src/cli.js",
+    "scripts": {
+        "format": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ardentkilnfire/nexonite.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ardentkilnfire/nexonite/issues"
+    },
+    "homepage": "https://github.com/ardentkilnfire/nexonite#readme",
+    "dependencies": {
+        "@clack/prompts": "^0.7.0",
+        "kleur": "^4.1.5",
+        "update-notifier": "^7.0.0"
+    },
+    "keywords": [
+        "nexonite",
+        "create",
+        "create nexonite",
+        "npm create nexonite"
+    ],
+    "engines": {
+        "node": ">= 20"
+    }
+}
