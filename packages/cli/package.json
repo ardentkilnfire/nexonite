@@ -1,7 +1,7 @@
 {
     "name": "create-nexonite",
     "description": "Get started quickly with nexonite by running: npm create nexonite",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "type": "module",
     "bin": "src/cli.js",
     "scripts": {
