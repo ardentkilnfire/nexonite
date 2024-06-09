@@ -22,7 +22,7 @@ body:
     id: logs
     attributes:
       label: Logs
-      description: Please copy and paste the errors from console
+      description: Please copy and paste the errors from the console
       render: bash
   - type: textarea
     id: system-info
