@@ -15,7 +15,7 @@ body:
       id: example
       attributes:
           label: Examples
-          description: Any example of feature, that you can imagine or saw somewhere.
+          description: Any example of the feature, that you can imagine or saw somewhere.
           placeholder: const example = myExample();
       validations:
           required: false
