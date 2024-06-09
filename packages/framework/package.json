@@ -5,6 +5,8 @@
     "description": "A framework for building discord bot using discord.js",
     "license": "MIT",
     "type": "module",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
@@ -30,6 +32,9 @@
         "tsup": "^8.0.2",
         "typescript": "^5.4.5"
     },
+    "dependencies": {
+        "zod": "^3.23.8"
+    },
     "peerDependencies": {
         "discord.js": "^14.0.0"
     },
@@ -47,8 +52,5 @@
     "keywords": [
         "nexonite",
         "discord.js framework"
-    ],
-    "dependencies": {
-        "zod": "^3.23.8"
-    }
+    ]
 }
