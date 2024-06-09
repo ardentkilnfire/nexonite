@@ -2,5 +2,5 @@ node_modules
 .env
 dist
 
-# Ignore cli package for now as it is incomplete!
-packages/cli
+# Ignore cli templates for now as it is incomplete!
+packages/cli/src/templates/
