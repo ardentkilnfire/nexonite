@@ -1,4 +1,5 @@
 import type { ClientOptions } from 'discord.js';
+import type { setDevMode } from '../utils';
 
 export interface NexoOptions {
     /**
@@ -70,20 +71,11 @@ export interface NexoOptions {
           };
 
     /**
-     * Developer mode options
+     * The dev options for the bot.
      *
-     * @type {boolean | string[]}
-     * @default false
-     *
-     * @example
-     * // Enable developer mode globaly
-     * dev: true
-     *
-     * @example
-     * // Enable developer mode on guild basis
-     * dev: ['3241234567890123456', '7891234567890123456', '9012345678901234567']
+     * @see{@link setDevMode}
      */
-    dev?: boolean | string[];
+    dev?: ReturnType<typeof setDevMode>;
 
     /**
      * Should nexonite cache commands - highly recommended

@@ -49,3 +49,21 @@ export function highlight(
 
     return `${bold}${color}${text}${reset}${normalWeight}`;
 }
+
+/**
+ * Sets the development mode for the bot.
+ *
+ * @param {Object} options - The options for setting development mode.
+ * @param {boolean} options.enableGlobally - Whether to enable development mode globally.
+ * @param {string[]} options.guilds - The guilds to enable development mode for.
+ * @returns {[boolean, string[]]} - An array containing the enableGlobally and guilds values.
+ */
+export function setDevMode({
+    enableGlobally,
+    guilds,
+}: {
+    enableGlobally: boolean;
+    guilds: string[];
+}): [boolean, string[]] {
+    return [enableGlobally, guilds];
+}

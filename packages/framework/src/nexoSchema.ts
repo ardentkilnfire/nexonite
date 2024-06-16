@@ -24,7 +24,7 @@ export const nexoOptionsSchema = z.object({
             }),
         ])
         .optional(),
-    dev: z.union([z.boolean(), snowflakeSchema.array().nonempty()]).optional(),
+    dev: z.tuple([z.boolean(), snowflakeSchema.array().nonempty()]).optional(),
     cache: z.boolean().default(true),
     debug: z.boolean().default(() => !!process.env['DEBUG']),
 });
