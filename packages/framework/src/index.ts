@@ -12,6 +12,9 @@ export type { PrefixCommandExec, PrefixCommandOptions } from '$types/commands';
 export { MessageContextMenuCommand, UserContextMenuCommand, messageContextMenuCommand, userContextMenuCommand } from '$commands/context';
 export type { ContextMenuCommandOptions } from '$types/commands';
 
+export { SlashCommand, slashCommand } from '$commands/slash';
+export { AutoCompleteHandler, SlashCommandsOptions } from '$types/commands';
+
 export { BaseCommand } from '$commands/.';
 export type { APICommandExec, BaseCommandOptions, CommandOptions } from '$types/commands';
 

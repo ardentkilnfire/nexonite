@@ -1,5 +1,6 @@
 import type { Nexonite } from '$/nexonite';
 import type {
+    AutocompleteInteraction,
     Awaitable,
     BaseInteraction,
     Message,
@@ -118,9 +119,33 @@ export interface PrefixCommandOptions extends BaseCommandOptions {
 }
 
 /**
+ * Interface for the options of slash commands.
+ *
+ */
+export interface SlashCommandsOptions extends BaseCommandOptions {
+    /**
+     * The data for the slash command.
+     */
+    data: RESTPostAPIApplicationCommandsJSONBody;
+}
+
+/**
+ * Type that represents the handler function for autocomplete commands.
+ *
+ * @param {Nexonite} client - The client instance.
+ * @param {AutocompleteInteraction} interaction - The interaction received.
+ * @returns {Awaitable<void>} - A promise that resolves when the command is done executing.
+ */
+export type AutoCompleteHandler = (
+    client: Nexonite,
+    interaction: AutocompleteInteraction,
+) => Awaitable<void>;
+
+/**
  * Type that represents the options for a command.
  *
  */
 export type CommandOptions =
+    | SlashCommandsOptions
     | ContextMenuCommandOptions
     | PrefixCommandOptions;
