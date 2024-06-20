@@ -6,17 +6,17 @@ export type { EventOptions } from '$types/events';
 
 export { PrefixCommandBuilder } from '$commands/builders';
 export { PrefixCommand, prefixCommand } from '$commands/prefix';
-export type { PrefixCommandExec, PrefixCommandOptions } from '$types/commands';
+export type { PrefixCommandExec, PrefixCommandsJSONBody } from '$types/commands';
 
 // prettier-ignore
 export { MessageContextMenuCommand, UserContextMenuCommand, messageContextMenuCommand, userContextMenuCommand } from '$commands/context';
-export type { ContextMenuCommandOptions } from '$types/commands';
+export type { ContextMenuCommandsJSONBody } from '$types/commands';
 
 export { SlashCommand, slashCommand } from '$commands/slash';
-export { AutoCompleteHandler, SlashCommandsOptions } from '$types/commands';
+export { AutoCompleteHandler, SlashCommandsJSONBody } from '$types/commands';
 
 export { BaseCommand } from '$commands/.';
-export type { APICommandExec, BaseCommandOptions, CommandOptions } from '$types/commands';
+export type { APICommandExec, CommandConfigs, CommandJSONBody } from '$types/commands';
 
 // Utility to highlight strings
 export type { HighlightColors } from '$types/utils';

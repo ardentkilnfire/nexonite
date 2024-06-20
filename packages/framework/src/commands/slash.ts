@@ -1,7 +1,12 @@
 import { BaseCommand } from '.';
 
 // Types
-import type { APICommandExec, AutoCompleteHandler, SlashCommandsOptions } from '$types/commands';
+import type {
+    APICommandExec,
+    AutoCompleteHandler,
+    CommandConfigs,
+    SlashCommandsJSONBody,
+} from '$types/commands';
 import type { ChatInputCommandInteraction } from 'discord.js';
 
 /**
@@ -10,7 +15,7 @@ import type { ChatInputCommandInteraction } from 'discord.js';
  * @template T - The type of the interaction.
  */
 export class SlashCommand extends BaseCommand<
-    SlashCommandsOptions,
+    SlashCommandsJSONBody,
     APICommandExec<ChatInputCommandInteraction>,
     ChatInputCommandInteraction
 > {
@@ -22,17 +27,18 @@ export class SlashCommand extends BaseCommand<
     /**
      * Creates a new instance of the class.
      *
-     * @param {SlashCommandsOptions} options - The options for the command.
+     * @param {SlashCommandsJSONBody} options - The options for the command.
      * @param {APICommandExec<ChatInputCommandInteraction>} execute - The command execution function.
      * @param {AutoCompleteHandler} [autocomplete] - The autocomplete handler for the command.
      * @throws {TypeError} If the autocomplete handler is not a function.
      */
     constructor(
-        options: SlashCommandsOptions,
+        data: SlashCommandsJSONBody,
         execute: APICommandExec<ChatInputCommandInteraction>,
+        config?: CommandConfigs,
         autocomplete?: AutoCompleteHandler,
     ) {
-        super(options, execute);
+        super(data, execute, config);
 
         if (autocomplete && typeof autocomplete !== 'function') {
             throw new TypeError('Autocomplete handler must be a function');
@@ -45,15 +51,19 @@ export class SlashCommand extends BaseCommand<
 /**
  * Function to create a new slash command.
  *
- * @param {SlashCommandsOptions & { execute: APICommandExec<ChatInputCommandInteraction>; autocomplete?: AutoCompleteHandler; }} options - The options for the command.
+ * @param {SlashCommandsJSONBody & { execute: APICommandExec<ChatInputCommandInteraction>; autocomplete?: AutoCompleteHandler; }} options - The options for the command.
  * @returns {SlashCommand} - The created slash command.
  */
-export function slashCommand(
-    options: SlashCommandsOptions & {
-        execute: APICommandExec<ChatInputCommandInteraction>;
-        autocomplete?: AutoCompleteHandler;
-    },
-): SlashCommand {
-    const { autocomplete, execute, ...rest } = options;
-    return new SlashCommand({ ...rest }, execute, autocomplete);
+export function slashCommand({
+    data,
+    execute,
+    config,
+    autocomplete,
+}: {
+    data: SlashCommandsJSONBody;
+    execute: APICommandExec<ChatInputCommandInteraction>;
+    config?: CommandConfigs;
+    autocomplete?: AutoCompleteHandler;
+}): SlashCommand {
+    return new SlashCommand(data, execute, config, autocomplete);
 }

@@ -10,12 +10,23 @@ export interface NexoOptions {
     /**
      * Path to commands
      */
-    commands?: string;
+    commands?: (
+        | {
+              APICommandsPath: string;
+              prefixCommandsPath?: string;
+          }
+        | {
+              APICommandsPath?: string;
+              prefixCommandsPath: string;
+          }
+    ) & {
+        cooldown?: [boolean, number];
+    };
 
     /**
      * Path to events
      */
-    events?: string;
+    eventsPath?: string;
 
     /**
      * Components

@@ -1,3 +1,6 @@
+import { isSnowflake } from './snowflakes';
+
+// Types
 import type { HighlightColors } from '$types/utils';
 
 /**
@@ -66,4 +69,16 @@ export function setDevMode({
     guilds: string[];
 }): [boolean, string[]] {
     return [enableGlobally, guilds];
+}
+
+/**
+ * Extracts the client id from a token.
+ *
+ * @param {string} token - The token from which to extract the client id.
+ * @return {string | null} - The client id if it exists, otherwise null.
+ */
+export function clientIdFromToken(token: string): string | null {
+    const encodedId = token.split('.')[0];
+    const possiblyASnowflake = Buffer.from(encodedId, 'base64').toString();
+    return isSnowflake(possiblyASnowflake) ? possiblyASnowflake : null;
 }

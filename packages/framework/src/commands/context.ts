@@ -2,7 +2,7 @@ import { ApplicationCommandType } from 'discord.js';
 import { BaseCommand } from '.';
 
 // Types
-import type { APICommandExec, ContextMenuCommandOptions } from '$types/commands';
+import type { APICommandExec, CommandConfigs, ContextMenuCommandsJSONBody } from '$types/commands';
 import type {
     MessageContextMenuCommandInteraction,
     UserContextMenuCommandInteraction,
@@ -12,7 +12,7 @@ import type {
  * Class representing a user context menu command.
  */
 export class UserContextMenuCommand extends BaseCommand<
-    ContextMenuCommandOptions,
+    ContextMenuCommandsJSONBody,
     APICommandExec<UserContextMenuCommandInteraction>,
     UserContextMenuCommandInteraction
 > {
@@ -24,42 +24,44 @@ export class UserContextMenuCommand extends BaseCommand<
     /**
      * Creates a new UserContextMenuCommand.
      *
-     * @param {ContextMenuCommandOptions} options - The options for the command.
+     * @param {ContextMenuCommandsJSONBody} options - The options for the command.
      * @param {APICommandExec<UserContextMenuCommandInteraction>} execute - The function to execute when the command is triggered.
      */
     constructor(
-        options: ContextMenuCommandOptions,
+        data: ContextMenuCommandsJSONBody,
         execute: APICommandExec<UserContextMenuCommandInteraction>,
+        configs?: CommandConfigs,
     ) {
-        super(options, execute);
+        super(data, execute, configs);
 
-        if (this.type !== options.data.type)
-            throw new TypeError(
-                `Expected type to be ${this.type} but received ${options.data.type}`,
-            );
+        if (this.type !== data.type)
+            throw new TypeError(`Expected type to be ${this.type} but received ${data.type}`);
     }
 }
 
 /**
  * Function to create a new UserContextMenuCommand.
  *
- * @param {ContextMenuCommandOptions & { execute: APICommandExec<UserContextMenuCommandInteraction> }} options - The options for the command.
+ * @param {ContextMenuCommandsJSONBody & { execute: APICommandExec<UserContextMenuCommandInteraction> }} options - The options for the command.
  * @returns {UserContextMenuCommand} - The created UserContextMenuCommand.
  */
-export function userContextMenuCommand(
-    options: ContextMenuCommandOptions & {
-        execute: APICommandExec<UserContextMenuCommandInteraction>;
-    },
-): UserContextMenuCommand {
-    const { execute, ...rest } = options;
-    return new UserContextMenuCommand({ ...rest }, execute);
+export function userContextMenuCommand({
+    data,
+    execute,
+    configs,
+}: {
+    data: ContextMenuCommandsJSONBody;
+    execute: APICommandExec<UserContextMenuCommandInteraction>;
+    configs?: CommandConfigs;
+}): UserContextMenuCommand {
+    return new UserContextMenuCommand(data, execute, configs);
 }
 
 /**
  * Class representing a message context menu command.
  */
 export class MessageContextMenuCommand extends BaseCommand<
-    ContextMenuCommandOptions,
+    ContextMenuCommandsJSONBody,
     APICommandExec<MessageContextMenuCommandInteraction>,
     MessageContextMenuCommandInteraction
 > {
@@ -71,32 +73,34 @@ export class MessageContextMenuCommand extends BaseCommand<
     /**
      * Creates a new MessageContextMenuCommand.
      *
-     * @param {ContextMenuCommandOptions} options - The options for the command.
+     * @param {ContextMenuCommandsJSONBody} options - The options for the command.
      * @param {APICommandExec<MessageContextMenuCommandInteraction>} execute - The function to execute when the command is triggered.
      */
     constructor(
-        options: ContextMenuCommandOptions,
+        data: ContextMenuCommandsJSONBody,
         execute: APICommandExec<MessageContextMenuCommandInteraction>,
+        config?: CommandConfigs,
     ) {
-        super(options, execute);
-        if (this.type !== options.data.type)
-            throw new TypeError(
-                `Expected type to be ${this.type} but received ${options.data.type}`,
-            );
+        super(data, execute, config);
+        if (this.type !== data.type)
+            throw new TypeError(`Expected type to be ${this.type} but received ${data.type}`);
     }
 }
 
 /**
  * Function to create a new MessageContextMenuCommand.
  *
- * @param {ContextMenuCommandOptions & { execute: APICommandExec<MessageContextMenuCommandInteraction> }} options - The options for the command.
+ * @param {ContextMenuCommandsJSONBody & { execute: APICommandExec<MessageContextMenuCommandInteraction> }} options - The options for the command.
  * @returns {MessageContextMenuCommand} - The created MessageContextMenuCommand.
  */
-export function messageContextMenuCommand(
-    options: ContextMenuCommandOptions & {
-        execute: APICommandExec<MessageContextMenuCommandInteraction>;
-    },
-): MessageContextMenuCommand {
-    const { execute, ...rest } = options;
-    return new MessageContextMenuCommand({ ...rest }, execute);
+export function messageContextMenuCommand({
+    data,
+    execute,
+    configs,
+}: {
+    data: ContextMenuCommandsJSONBody;
+    execute: APICommandExec<MessageContextMenuCommandInteraction>;
+    configs?: CommandConfigs;
+}): MessageContextMenuCommand {
+    return new MessageContextMenuCommand(data, execute, configs);
 }

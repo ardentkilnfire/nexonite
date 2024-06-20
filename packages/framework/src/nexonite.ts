@@ -46,9 +46,10 @@ export class Nexonite extends Client {
      * @returns A promise that resolves with the token.
      */
     async login(token?: string): Promise<string> {
-        if (this.nexoOptions.events) {
+        // Load Events
+        if (this.nexoOptions.eventsPath) {
             this.log.debug('Attempting to load events...');
-            this.registerEvents(this.nexoOptions.events);
+            this.registerEvents(this.nexoOptions.eventsPath);
         } else {
             this.log.debug('No events path specified!');
         }
@@ -90,7 +91,6 @@ export class Nexonite extends Client {
             event.options.once
                 ? this.once(event.name, eventCallback)
                 : this.on(event.name, eventCallback);
-            this.log.debug(`Loaded event ${event.name}`);
         }
     }
 }

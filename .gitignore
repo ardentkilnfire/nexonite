@@ -4,3 +4,6 @@ dist
 
 # Ignore cli templates for now as it is incomplete!
 packages/cli/src/templates/
+
+# Ignore dev folder, its just for testing
+dev/

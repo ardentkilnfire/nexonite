@@ -1,3 +1,6 @@
+import type { MessageContextMenuCommand, UserContextMenuCommand } from '$/commands/context';
+import type { PrefixCommand } from '$/commands/prefix';
+import type { SlashCommand } from '$/commands/slash';
 import type { Nexonite } from '$/nexonite';
 import type {
     AutocompleteInteraction,
@@ -39,95 +42,80 @@ export type PrefixCommandExec = (
 /**
  * Interface for the options of a command.
  */
-export interface BaseCommandOptions {
+export interface CommandConfigs {
     /**
-     * Additional configuration options.
+     * The cooldown duration in seconds.
      */
-    config?: {
-        /**
-         * Whether the command can only be used in DMs.
-         */
-        dm?: boolean;
+    cooldown?: number;
 
-        /**
-         * Whether the command is disabled.
-         */
-        disabled?: boolean;
+    /**
+     * Whether the command can only be used in DMs.
+     */
+    dm?: boolean;
 
-        /**
-         * Whether the command is only available to the bot developer(s).
-         */
-        devOnly?: boolean;
+    /**
+     * Whether the command is disabled.
+     */
+    disabled?: boolean;
 
-        /**
-         * The cooldown duration in seconds.
-         */
-        cooldown?: number;
+    /**
+     * Whether the command is only available to the bot developer(s).
+     */
+    devOnly?: boolean;
 
-        /**
-         * Whether the command should be marked for deletion from the API upon the bot's restart.
-         */
-        markForDeletionFromAPI?: boolean;
-    };
+    /**
+     * The ids of the guilds where the command is deployed (Only when, devOnly is true or client.nexoOptions.dev is set globally)
+     */
+    guilds?: string[];
+
+    /**
+     * Whether the command should be marked for deletion from the API upon the bot's restart.
+     */
+    markForDeletionFromAPI?: boolean;
 }
 
 /**
  * Interface for the options of context menu commands.
  *
  */
-export interface ContextMenuCommandOptions extends BaseCommandOptions {
-    /**
-     * The data for the context menu command.
-     */
-    data: RESTPostAPIContextMenuApplicationCommandsJSONBody;
-}
+export type ContextMenuCommandsJSONBody = RESTPostAPIContextMenuApplicationCommandsJSONBody;
 
 /**
  * Interface for the options of prefix commands.
  *
  */
-export interface PrefixCommandOptions extends BaseCommandOptions {
+export interface PrefixCommandsJSONBody {
     /**
-     * The data for the prefix command.
+     * The name of the command.
      */
-    data: {
-        /**
-         * The name of the command.
-         */
-        name: string;
+    name: string;
 
-        /**
-         * The description of the command.
-         */
-        description: string;
+    /**
+     * The description of the command.
+     */
+    description: string;
 
-        /**
-         * The expected arguments for the command.
-         */
-        expectedArgs?: string[];
+    /**
+     * The expected arguments for the command.
+     */
+    expectedArgs?: string[];
 
-        /**
-         * The aliases for the command.
-         */
-        aliases?: string[];
+    /**
+     * The aliases for the command.
+     */
+    aliases?: string[];
 
-        /**
-         * The permissions required to run the command.
-         */
-        permissions?: PermissionResolvable;
-    };
+    /**
+     * The permissions required to run the command.
+     */
+    permissions?: PermissionResolvable;
 }
 
 /**
  * Interface for the options of slash commands.
  *
  */
-export interface SlashCommandsOptions extends BaseCommandOptions {
-    /**
-     * The data for the slash command.
-     */
-    data: RESTPostAPIApplicationCommandsJSONBody;
-}
+export type SlashCommandsJSONBody = RESTPostAPIApplicationCommandsJSONBody;
 
 /**
  * Type that represents the handler function for autocomplete commands.
@@ -145,7 +133,10 @@ export type AutoCompleteHandler = (
  * Type that represents the options for a command.
  *
  */
-export type CommandOptions =
-    | SlashCommandsOptions
-    | ContextMenuCommandOptions
-    | PrefixCommandOptions;
+export type CommandJSONBody =
+    | PrefixCommandsJSONBody
+    | ContextMenuCommandsJSONBody
+    | SlashCommandsJSONBody;
+
+export type APICommandsType = SlashCommand | UserContextMenuCommand | MessageContextMenuCommand;
+

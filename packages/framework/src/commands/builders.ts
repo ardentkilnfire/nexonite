@@ -1,7 +1,7 @@
 import { PermissionResolvable } from 'discord.js';
 
 // Types
-import type { PrefixCommandOptions } from '$types/commands';
+import type { PrefixCommandsJSONBody } from '$types/commands';
 
 /**
  * Class representing a prefix command builder.
@@ -87,7 +87,7 @@ export class PrefixCommandBuilder {
      * Converts the builder into a JSON object representing the command data.
      *
      */
-    public toJSON(): PrefixCommandOptions['data'] {
+    public toJSON(): PrefixCommandsJSONBody {
         return {
             name: this.name,
             description: this.description,

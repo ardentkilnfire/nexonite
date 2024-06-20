@@ -3,8 +3,19 @@ import { snowflakeSchema } from '$utils/snowflakes';
 
 export const nexoOptionsSchema = z.object({
     clientOptions: z.object({}).passthrough(),
-    commands: z.string().optional(),
-    events: z.string().optional(),
+    commands: z
+        .union([
+            z.object({
+                APICommandsPath: z.string(),
+                prefixCommandsPath: z.string().optional(),
+            }),
+            z.object({
+                APICommandsPath: z.string().optional(),
+                prefixCommandsPath: z.string(),
+            }),
+        ])
+        .optional(),
+    eventsPath: z.string().optional(),
     components: z
         .union([
             z.object({
