@@ -2,7 +2,7 @@ import { ApplicationCommandType } from 'discord.js';
 import { BaseCommand } from '.';
 
 // Types
-import type { APICommandExec, CommandConfigs, ContextMenuCommandsJSONBody } from '$types/commands';
+import type { CommandConfigs, CommandExec, ContextMenuCommandsJSONBody } from '$types/commands';
 import type {
     MessageContextMenuCommandInteraction,
     UserContextMenuCommandInteraction,
@@ -13,7 +13,7 @@ import type {
  */
 export class UserContextMenuCommand extends BaseCommand<
     ContextMenuCommandsJSONBody,
-    APICommandExec<UserContextMenuCommandInteraction>,
+    CommandExec<UserContextMenuCommandInteraction>,
     UserContextMenuCommandInteraction
 > {
     /**
@@ -25,11 +25,11 @@ export class UserContextMenuCommand extends BaseCommand<
      * Creates a new UserContextMenuCommand.
      *
      * @param {ContextMenuCommandsJSONBody} options - The options for the command.
-     * @param {APICommandExec<UserContextMenuCommandInteraction>} execute - The function to execute when the command is triggered.
+     * @param {CommandExec<UserContextMenuCommandInteraction>} execute - The function to execute when the command is triggered.
      */
     constructor(
         data: ContextMenuCommandsJSONBody,
-        execute: APICommandExec<UserContextMenuCommandInteraction>,
+        execute: CommandExec<UserContextMenuCommandInteraction>,
         configs?: CommandConfigs,
     ) {
         super(data, execute, configs);
@@ -42,7 +42,7 @@ export class UserContextMenuCommand extends BaseCommand<
 /**
  * Function to create a new UserContextMenuCommand.
  *
- * @param {ContextMenuCommandsJSONBody & { execute: APICommandExec<UserContextMenuCommandInteraction> }} options - The options for the command.
+ * @param {ContextMenuCommandsJSONBody & { execute: CommandExec<UserContextMenuCommandInteraction> }} options - The options for the command.
  * @returns {UserContextMenuCommand} - The created UserContextMenuCommand.
  */
 export function userContextMenuCommand({
@@ -51,7 +51,7 @@ export function userContextMenuCommand({
     configs,
 }: {
     data: ContextMenuCommandsJSONBody;
-    execute: APICommandExec<UserContextMenuCommandInteraction>;
+    execute: CommandExec<UserContextMenuCommandInteraction>;
     configs?: CommandConfigs;
 }): UserContextMenuCommand {
     return new UserContextMenuCommand(data, execute, configs);
@@ -62,7 +62,7 @@ export function userContextMenuCommand({
  */
 export class MessageContextMenuCommand extends BaseCommand<
     ContextMenuCommandsJSONBody,
-    APICommandExec<MessageContextMenuCommandInteraction>,
+    CommandExec<MessageContextMenuCommandInteraction>,
     MessageContextMenuCommandInteraction
 > {
     /**
@@ -74,11 +74,11 @@ export class MessageContextMenuCommand extends BaseCommand<
      * Creates a new MessageContextMenuCommand.
      *
      * @param {ContextMenuCommandsJSONBody} options - The options for the command.
-     * @param {APICommandExec<MessageContextMenuCommandInteraction>} execute - The function to execute when the command is triggered.
+     * @param {CommandExec<MessageContextMenuCommandInteraction>} execute - The function to execute when the command is triggered.
      */
     constructor(
         data: ContextMenuCommandsJSONBody,
-        execute: APICommandExec<MessageContextMenuCommandInteraction>,
+        execute: CommandExec<MessageContextMenuCommandInteraction>,
         config?: CommandConfigs,
     ) {
         super(data, execute, config);
@@ -90,7 +90,7 @@ export class MessageContextMenuCommand extends BaseCommand<
 /**
  * Function to create a new MessageContextMenuCommand.
  *
- * @param {ContextMenuCommandsJSONBody & { execute: APICommandExec<MessageContextMenuCommandInteraction> }} options - The options for the command.
+ * @param {ContextMenuCommandsJSONBody & { execute: CommandExec<MessageContextMenuCommandInteraction> }} options - The options for the command.
  * @returns {MessageContextMenuCommand} - The created MessageContextMenuCommand.
  */
 export function messageContextMenuCommand({
@@ -99,7 +99,7 @@ export function messageContextMenuCommand({
     configs,
 }: {
     data: ContextMenuCommandsJSONBody;
-    execute: APICommandExec<MessageContextMenuCommandInteraction>;
+    execute: CommandExec<MessageContextMenuCommandInteraction>;
     configs?: CommandConfigs;
 }): MessageContextMenuCommand {
     return new MessageContextMenuCommand(data, execute, configs);

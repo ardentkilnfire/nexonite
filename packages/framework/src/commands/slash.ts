@@ -2,9 +2,9 @@ import { BaseCommand } from '.';
 
 // Types
 import type {
-    APICommandExec,
     AutoCompleteHandler,
     CommandConfigs,
+    CommandExec,
     SlashCommandsJSONBody,
 } from '$types/commands';
 import type { ChatInputCommandInteraction } from 'discord.js';
@@ -16,7 +16,7 @@ import type { ChatInputCommandInteraction } from 'discord.js';
  */
 export class SlashCommand extends BaseCommand<
     SlashCommandsJSONBody,
-    APICommandExec<ChatInputCommandInteraction>,
+    CommandExec<ChatInputCommandInteraction>,
     ChatInputCommandInteraction
 > {
     /**
@@ -28,13 +28,13 @@ export class SlashCommand extends BaseCommand<
      * Creates a new instance of the class.
      *
      * @param {SlashCommandsJSONBody} options - The options for the command.
-     * @param {APICommandExec<ChatInputCommandInteraction>} execute - The command execution function.
+     * @param {CommandExec<ChatInputCommandInteraction>} execute - The command execution function.
      * @param {AutoCompleteHandler} [autocomplete] - The autocomplete handler for the command.
      * @throws {TypeError} If the autocomplete handler is not a function.
      */
     constructor(
         data: SlashCommandsJSONBody,
-        execute: APICommandExec<ChatInputCommandInteraction>,
+        execute: CommandExec<ChatInputCommandInteraction>,
         config?: CommandConfigs,
         autocomplete?: AutoCompleteHandler,
     ) {
@@ -51,7 +51,7 @@ export class SlashCommand extends BaseCommand<
 /**
  * Function to create a new slash command.
  *
- * @param {SlashCommandsJSONBody & { execute: APICommandExec<ChatInputCommandInteraction>; autocomplete?: AutoCompleteHandler; }} options - The options for the command.
+ * @param {SlashCommandsJSONBody & { execute: CommandExec<ChatInputCommandInteraction>; autocomplete?: AutoCompleteHandler; }} options - The options for the command.
  * @returns {SlashCommand} - The created slash command.
  */
 export function slashCommand({
@@ -61,7 +61,7 @@ export function slashCommand({
     autocomplete,
 }: {
     data: SlashCommandsJSONBody;
-    execute: APICommandExec<ChatInputCommandInteraction>;
+    execute: CommandExec<ChatInputCommandInteraction>;
     config?: CommandConfigs;
     autocomplete?: AutoCompleteHandler;
 }): SlashCommand {

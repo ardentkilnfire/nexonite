@@ -1,12 +1,7 @@
 import { createHash } from 'node:crypto';
 
 // Types
-import type {
-    APICommandExec,
-    CommandConfigs,
-    CommandJSONBody,
-    PrefixCommandExec,
-} from '$types/commands';
+import type { CommandConfigs, CommandExec, CommandJSONBody } from '$types/commands';
 import type {
     BaseInteraction,
     ChatInputCommandInteraction,
@@ -22,7 +17,7 @@ import type {
  */
 export abstract class BaseCommand<
     A extends CommandJSONBody,
-    K extends APICommandExec<T> | PrefixCommandExec,
+    K extends CommandExec<T>,
     T extends BaseInteraction = ChatInputCommandInteraction | ContextMenuCommandInteraction,
 > {
     /**
