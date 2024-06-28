@@ -1,98 +1,101 @@
 import type { ClientOptions } from 'discord.js';
+import { AtLeastOne } from './utils';
 
+/**
+ * The options for the Nexonite framework.
+ */
 export interface NexoOptions {
     /**
-     * Base discord.js client options
+     * The options for the Discord client.
+     * @see https://discord.js.org/docs/packages/discord.js/14.15.3/Client:Class
      */
     clientOptions: ClientOptions;
 
     /**
-     * Path to commands
+     * The path to the commands directory.
+     * If not specified, commands will not be loaded.
+     * @default undefined
      */
     commands?: string;
 
     /**
-     * Path to events
+     * The paths to the components directories.
+     * If not specified, components will not be loaded.
+     * @default undefined
+     */
+    components?: AtLeastOne<{
+        /**
+         * The path to the buttons directory.
+         */
+        buttons: string;
+
+        /**
+         * The path to the modals directory.
+         */
+        modals: string;
+
+        /**
+         * The path to the selectMenus directory.
+         */
+        selectMenus: string;
+    }>;
+
+    /**
+     * Whether to log debug messages or not.
+     * @default false
+     */
+    debug?: boolean;
+
+    /**
+     * Registers commands in specified guilds only, Ideal for testing commands before deploying.
+     * If not specified, dev mode will not be enabled.
+     * @default undefined
+     */
+    dev?: {
+        /**
+         * Whether to enable global dev mode or not.
+         * @default false
+         */
+        global: boolean;
+
+        /**
+         * The guilds to enable dev mode for.
+         * @default []
+         */
+        guilds: string[];
+    };
+
+    /**
+     * The path to the events directory.
+     * If not specified, events will not be loaded.
+     * @default undefined
      */
     events?: string;
 
     /**
-     * Components
+     * The global cooldown for commands and components in milliseconds.
+     * To disable global cooldown, set it to 0.
+     * @default 5000
      */
-    components?:
-        | {
-              /**
-               * Path to buttons
-               */
-              buttons: string;
-
-              /**
-               * path to modals
-               */
-              modals?: string;
-
-              /**
-               * Path to selectMenus
-               */
-              selectMenus?: string;
-          }
-        | {
-              /**
-               * Path to buttons
-               */
-              buttons?: string;
-
-              /**
-               * path to modals
-               */
-              modals: string;
-
-              /**
-               * Path to selectMenus
-               */
-              selectMenus?: string;
-          }
-        | {
-              /**
-               * Path to buttons
-               */
-              buttons?: string;
-
-              /**
-               * path to modals
-               */
-              modals?: string;
-
-              /**
-               * Path to selectMenus
-               */
-              selectMenus: string;
-          };
+    globalCooldown?: number;
 
     /**
-     * Developer mode options
-     *
-     * @type {boolean | string[]}
-     * @default false
-     *
-     * @example
-     * // Enable developer mode globaly
-     * dev: true
-     *
-     * @example
-     * // Enable developer mode on guild basis
-     * dev: ['3241234567890123456', '7891234567890123456', '9012345678901234567']
+     * The fallback messages to show in various validation errors.
+     * If not specified, hardcoded messages will be used.
+     * @default undefined
      */
-    dev?: boolean | string[];
-
-    /**
-     * Should nexonite cache commands - highly recommended
-     * @default true
-     */
-    cache?: boolean;
-
-    /**
-     * Whether to emit debug messages
-     */
-    debug?: boolean;
+    messages?: AtLeastOne<{
+        /**
+         * The message to show when a command is on cooldown.
+         */
+        cooldown: string;
+        /**
+         * The message to show when a command is unknown.
+         */
+        unknownCommand: string;
+        /**
+         * The message to show when a component is unknown.
+         */
+        unknownComponent: string;
+    }>;
 }
