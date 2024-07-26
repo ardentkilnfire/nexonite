@@ -2,8 +2,6 @@ import { SlashCommand } from './slash';
 
 // Types
 import type { CommandResponseData } from '$types/commands';
-import { UserContextMenuCommand } from './context/user';
-import { MessageContextMenuCommand } from './context/message';
 
 export async function respond(data: CommandResponseData) {
     const { client, interaction, commandIdMap } = data;
