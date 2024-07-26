@@ -20,6 +20,7 @@
         "paths": {
             "$/*": ["./src/*"],
             "$cache": ["./src/lib/cache.ts"],
+            "$commands/*": ["./src/commands/*"],
             "$types/*": ["./src/lib/types/*"],
             "$utils/*": ["./src/lib/utils/*"],
             "$events/*": ["./src/events/*"]

@@ -1,5 +1,5 @@
 import type { ClientOptions } from 'discord.js';
-import { AtLeastOne } from './utils';
+import type { AtLeastOne } from './utils';
 
 /**
  * The options for the Nexonite framework.
