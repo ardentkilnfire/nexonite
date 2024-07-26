@@ -31,7 +31,8 @@ const nexoClient = new Nexonite({
     },
     debug: true,
     events: './src/events',
-    dev: ['1171628645379493980'],
+    commands: './src/commands',
+    
 });
 
 try {
