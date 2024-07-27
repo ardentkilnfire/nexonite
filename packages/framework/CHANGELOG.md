@@ -1,5 +1,11 @@
 # nexonite
 
+## 0.2.1
+
+### Patch Changes
+
+-   44c2cb2: Publish v0.2.1 as a followup for v0.2.0, because ifked up there!
+
 ## 0.2.0
 
 ### Minor Changes
