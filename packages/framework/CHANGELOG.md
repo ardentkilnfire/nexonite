@@ -1,5 +1,11 @@
 # nexonite
 
+## 0.2.0
+
+### Minor Changes
+
+-   1a61912: Added Commands Support
+
 ## 0.1.1
 
 ### Patch Changes
