@@ -23,7 +23,7 @@ export type EventExec<T extends EventName> = (
  */
 export interface EventOptions<T extends EventName> {
     /**
-     * The event name: https://discord.js.org/#/docs/main/stable/class/Client
+     * The event name: https://discord.js.org/docs/packages/discord.js/14.15.3/Events:Enum
      */
     name: T;
 

@@ -1,4 +1,7 @@
 import { nexoOptionsSchema } from '$/nexoSchema';
+import { getCommandIdMap } from '$commands/cache';
+import { resolveCommands } from '$commands/resolve';
+import { respond } from '$commands/respond';
 import { Event } from '$events/.';
 import { highlight } from '$utils/.';
 import { loadFiles } from '$utils/file_loader';
@@ -46,6 +49,15 @@ export class Nexonite extends Client {
      * @returns A promise that resolves with the token.
      */
     async login(token?: string): Promise<string> {
+        // Try to load commands
+        if (this.nexoOptions.commands) {
+            this.log.debug('Attempting to load commands...');
+            this.initCommandsRegistration(this.nexoOptions.commands);
+        } else {
+            this.log.debug('No commands path specified!');
+        }
+
+        // Try to load events
         if (this.nexoOptions.events) {
             this.log.debug('Attempting to load events...');
             this.registerEvents(this.nexoOptions.events);
@@ -90,7 +102,43 @@ export class Nexonite extends Client {
             event.options.once
                 ? this.once(event.name, eventCallback)
                 : this.on(event.name, eventCallback);
-            this.log.debug(`Loaded event ${event.name}`);
         }
+    }
+
+    /**
+     * Initializes command registration and event listening.
+     * Resolves commands from the specified path and registers them with the client.
+     * Listens for 'interactionCreate' events and responds to them.
+     *
+     * @param {string} commandPaths - The path to the command files.
+     * @throws {Error} If dev guilds array is empty and dev commands are used.
+     */
+    private async initCommandsRegistration(commandPaths: string) {
+        const resolvedCommands = await resolveCommands(this, commandPaths);
+        const commandIdMap = await getCommandIdMap(this, resolvedCommands);
+
+        if (!this.nexoOptions.dev?.guilds?.length) {
+            const hasDevCommands = Array.from(resolvedCommands.commands).some(
+                (command) => command.configs?.devOnly,
+            );
+
+            if (this.nexoOptions.dev?.global || hasDevCommands)
+                throw new Error(
+                    'You must provide at least one guild id in the dev guilds array to use dev commands',
+                );
+        }
+
+        // Whenever there is a interactionCreate event respond to it
+        this.on('interactionCreate', (interaction) => {
+            this.log.debug(
+                `Interaction received: ${interaction.id} | ${interaction.type} | Command Id: ${interaction.isCommand() && interaction.commandId}`,
+            );
+
+            respond({
+                interaction,
+                client: this,
+                commandIdMap,
+            });
+        });
     }
 }

@@ -23,3 +23,21 @@ export function parseSchema<T extends z.ZodType>(
         .join('\n');
     throw new TypeError(`Error parsing schema for ${name}:\n${formattedError}\n`);
 }
+
+/**
+ * Returns a Zod schema that requires at least one of the properties defined in the original schema to be provided.
+ *
+ * @template T - The type of the object being defined.
+ * @param {z.ZodObject<T>} schema - The original schema that at least one of its properties must be provided.
+ * @returns {z.ZodObject<T>} - A schema that requires at least one of the properties defined in the original schema to be provided.
+ */
+export function atLeastOneSchema<T extends z.ZodRawShape>(schema: z.ZodObject<T>) {
+    return schema.refine(
+        (data) => {
+            return Object.values(data).some((value) => value !== undefined);
+        },
+        {
+            message: `At least one of ${Object.keys(schema.shape).join(', ')} must be provided`,
+        },
+    );
+}
