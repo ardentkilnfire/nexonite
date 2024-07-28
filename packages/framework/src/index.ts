@@ -27,3 +27,4 @@ export {
 // Utility to highlight strings
 export type { HighlightColors } from '$types/utils';
 export { highlight } from '$utils/index';
+export { clientIdFromToken } from '$utils/token';
