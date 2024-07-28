@@ -1,5 +1,11 @@
 # nexonite
 
+## 0.2.2
+
+### Patch Changes
+
+-   e64bf73: Exposed function to get ClientId from token
+
 ## 0.2.1
 
 ### Patch Changes
